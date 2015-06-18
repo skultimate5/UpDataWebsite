@@ -15,15 +15,18 @@
 </head>
 <body ng-controller="dataController">
     <table class="table table-striped">
-        <thead ng-init="headerList=['Date', 'Total Steps', 'Distance(Miles)', 'Distance(KM)', 'Calories Burned', 'Active Time', 'Percent Time Active', 'Total Inactive Time', 'Total Inactive Time (sec)', 'Percent Time Inactive']">
+        <thead ng-init="headerList=['Total Steps', 'Distance(Miles)', 'Distance(KM)', 'Calories Burned', 'Active Time', 'Percent Time Active', 'Total Inactive Time', 'Total Inactive Time (sec)', 'Percent Time Inactive']">
             <tr>
+                <th class="date">
+                    <a ng-click="sortBy('date')">Date <i class="fa fa-sort"></i></a>
+                </th>
                 <th ng-repeat="header in headerList">
                     {{header}}
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="dataRows in allData">
+            <tr ng-repeat="dataRows in allData | orderBy:sortingOrder:reverse">
                 <td ng-repeat="dataColumn in dataRows">{{dataColumn}}</td>
             </tr>
         </tbody>

@@ -18,6 +18,15 @@ app.controller('dataController', function ($scope) {
     $scope.dataSource = test;
     $scope.columns = testColumns;
 
+    $scope.sortingOrder = 'date';
+    $scope.reverse = false;
+
+    $scope.sortBy = function (newSortingOrder) {
+        if ($scope.sortingOrder == newSortingOrder) {
+            $scope.reverse = !$scope.reverse;
+        }
+        $scope.sortingOrder = newSortingOrder;
+    };
 
     function getAllDataArray(){
 
