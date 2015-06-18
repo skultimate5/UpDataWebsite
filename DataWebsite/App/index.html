@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="myApp">
+<head>
+    <script src="../Scripts/angular.js"></script>
+    <script src="../Scripts/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/dataController.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="//cdn.kendostatic.com/2014.2.716/js/kendo.all.min.js"></script>
+    <script src="//cdn.kendostatic.com/2014.2.716/js/kendo.angular.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <title>Sample Title</title>
+	<meta charset="utf-8" />
+</head>
+<body ng-controller="dataController">
+    <table class="table table-striped">
+        <thead ng-init="headerList=['Date', 'Total Steps', 'Distance(Miles)', 'Distance(KM)', 'Calories Burned', 'Active Time', 'Percent Time Active', 'Total Inactive Time', 'Total Inactive Time (sec)', 'Percent Time Inactive']">
+            <tr>
+                <th ng-repeat="header in headerList">
+                    {{header}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="dataRows in allData">
+                <td ng-repeat="dataColumn in dataRows">{{dataColumn}}</td>
+            </tr>
+        </tbody>
+    </table> 
+</body>
+</html>
