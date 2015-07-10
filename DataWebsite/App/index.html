@@ -11,25 +11,40 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
     <title>Sample Title</title>
-	<meta charset="utf-8" />
+    <meta charset="utf-8" />
 </head>
 <body ng-controller="dataController">
-    <table class="table table-striped">
-        <thead ng-init="headerList=['Total Steps', 'Distance(Miles)', 'Distance(KM)', 'Calories Burned', 'Active Time', 'Percent Time Active', 'Total Inactive Time', 'Total Inactive Time (sec)', 'Percent Time Inactive']">
-            <tr>
-                <th class="date">
-                    <a ng-click="sortBy('date')">Date <i class="fa fa-sort"></i></a>
-                </th>
-                <th ng-repeat="header in headerList">
-                    {{header}}
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="dataRows in allData | orderBy:sortingOrder:reverse">
-                <td ng-repeat="dataColumn in dataRows">{{dataColumn}}</td>
-            </tr>
-        </tbody>
-    </table> 
+    <ul class="nav nav-tabs" id="tabList">
+        <li class="active"><a showtab="" href="#overviewSection">Overall</a></li>
+        <li><a showtab="" href="#graphSection">Graphs</a></li>
+        <li><a showtab="" href="#tableSection">Tables</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="overviewSection" class="tab-pane fade in active">
+            <h3>Overview Section</h3>
+        </div>
+        <div id="graphSection" class="tab-pane fade">
+            <h3>Graph Section</h3>
+        </div>
+        <div id="tableSection" class="tab-pane fade">
+            <table class="table table-striped">
+                <thead ng-init="headerList=['Total Steps', 'Distance(Miles)', 'Distance(KM)', 'Calories Burned', 'Active Time', 'Percent Time Active', 'Total Inactive Time', 'Total Inactive Time (sec)', 'Percent Time Inactive']">
+                    <tr>
+                        <th class="date">
+                            <a ng-click="sortBy('date')">Date <i class="fa fa-sort"></i></a>
+                        </th>
+                        <th ng-repeat="header in headerList">
+                            {{header}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dataRows in allData | orderBy:sortingOrder:reverse">
+                        <td ng-repeat="dataColumn in dataRows">{{dataColumn}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
